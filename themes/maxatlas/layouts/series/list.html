@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="page">
+  <h1 class="page__title">// SERIES</h1>
+  <p class="page__subtitle">Long-form content organized into episodes</p>
+
+  <div class="post-list">
+    {{ range .Data.Terms.ByCount }}
+      {{ $termPage := .Page }}
+      {{ $cover := $termPage.Resources.GetMatch "cover.*" }}
+      {{ $pages := .Pages.ByDate.Reverse }}
+      {{ $latest := index $pages 0 }}
+      <a class="post-card post-card--series" href="{{ $termPage.RelPermalink }}">
+        <div class="post-card__cover{{ if not $cover }} post-card__cover--empty{{ end }}">
+          {{ if $cover }}
+            <img class="post-card__cover-img" src="{{ $cover.RelPermalink }}" alt="{{ $termPage.Title }}">
+          {{ end }}
+        </div>
+        <div class="post-card__body">
+          <div class="post-card__title" style="color:var(--accent-magenta);text-shadow:var(--glow-magenta);">
+            {{ upper $termPage.Title }}
+          </div>
+          <div class="post-card__excerpt">{{ $termPage.Params.description }}</div>
+          <div class="post-card__date">
+            <span style="color:var(--accent-magenta);">{{ len .Pages }} episodes</span>
+            {{ if $latest }} · last updated {{ $latest.Date.Format "January 2, 2006" }}{{ end }}
+          </div>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
