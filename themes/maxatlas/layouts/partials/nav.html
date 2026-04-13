@@ -1,0 +1,8 @@
+<nav class="nav">
+  <a class="nav__logo" href="{{ "/" | relURL }}">MAXATLAS</a>
+  <ul class="nav__links">
+    <li><a href="{{ "/posts/" | relURL }}"{{ if hasPrefix .RelPermalink "/posts" }} aria-current="page"{{ end }}>Blog</a></li>
+    <li><a href="{{ "/series/" | relURL }}"{{ if hasPrefix .RelPermalink "/series" }} aria-current="page"{{ end }}>Series</a></li>
+    <li><a href="{{ "/about/" | relURL }}"{{ if hasPrefix .RelPermalink "/about" }} aria-current="page"{{ end }}>About</a></li>
+  </ul>
+</nav>

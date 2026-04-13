@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ site.LanguageCode }}">
-<head><meta charset="UTF-8"><title>{{ .Title }}</title></head>
-<body>{{ block "main" . }}{{ end }}</body>
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  {{ partial "nav.html" . }}
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+</body>
 </html>
