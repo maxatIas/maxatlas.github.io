@@ -12,9 +12,11 @@
 <div class="page">
   <article>
     <h1 class="article__title">{{ .Title }}</h1>
+    {{ if ne .Params.showMeta false }}
     <div class="article__meta">
       {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
     </div>
+    {{ end }}
     <div class="article__tags">
       {{ range .Params.series }}
         <a href="{{ printf "/series/%s/" . | relURL }}" class="tag tag--series">{{ . }}</a>

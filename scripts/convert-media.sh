@@ -9,15 +9,14 @@ set -euo pipefail
 
 CONTENT_DIR="${1:-content}"
 
-if ! command -v ffmpeg &>/dev/null; then
-  echo "ERROR: ffmpeg not found. Install it with: brew install ffmpeg" >&2
+if ! command -v magick &>/dev/null; then
+  echo "ERROR: ImageMagick not found. Install it with: brew install imagemagick" >&2
   exit 1
 fi
 
 # ── Images (JPG / PNG) → AVIF ─────────────────────────────────────────────────
 echo "==> Converting images → AVIF …"
 while IFS= read -r -d '' src; do
-  # Derive output path: strip extension, add .avif
   base="${src%.*}"
   dst="${base}.avif"
   if [[ -f "$dst" ]]; then
@@ -25,12 +24,8 @@ while IFS= read -r -d '' src; do
     continue
   fi
   echo "  $src → $dst"
-  ffmpeg -i "$src" \
-    -c:v libaom-av1 -crf 30 -b:v 0 \
-    -pix_fmt yuv420p \
-    -still-picture 1 \
-    "$dst" \
-    -loglevel error -stats
+  magick "$src" -quality 60 "$dst"
+  rm "$src"
 done < <(find "$CONTENT_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -print0)
 
 echo ""

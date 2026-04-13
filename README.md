@@ -2,14 +2,14 @@
 
 Personal website powered by [Hugo](https://gohugo.io/) with the custom **maxatlas** theme — a cyberpunk/neon aesthetic built for developer blogs.
 
-**Live site:** https://max.pilato.fr/
+**Live site:** <https://max.pilato.fr/>
 
 ---
 
 ## Requirements
 
 - [Hugo](https://gohugo.io/installation/) **extended** v0.160.1+
-- [ffmpeg](https://ffmpeg.org/) (optional — for media conversion, see `scripts/convert-media.sh`)
+- [ImageMagick](https://imagemagick.org/) (optional — for image conversion to AVIF, see `scripts/convert-media.sh`)
 
 ---
 
@@ -29,13 +29,13 @@ hugo server --buildFuture
 hugo server --buildDrafts --buildFuture
 ```
 
-The site is served at http://localhost:1313/ with live reload.
+The site is served at <http://localhost:1313/> with live reload.
 
 ---
 
 ## Content Structure
 
-```
+```txt
 content/
 ├── about/
 │   └── index.md
@@ -43,7 +43,7 @@ content/
 │   └── yyyy/
 │       └── yyyy-mm-dd-slug/
 │           ├── index.md        ← article
-│           ├── cover.jpg       ← optional cover image (auto-detected)
+│           ├── cover.avif       ← optional cover image (auto-detected)
 │           └── video.mp4       ← optional video asset
 └── series/
     └── series-slug/
@@ -54,7 +54,7 @@ content/
 
 Every post lives in a **Page Bundle** following this pattern:
 
-```
+```txt
 content/posts/yyyy/yyyy-mm-dd-slug/index.md
 ```
 
@@ -78,6 +78,7 @@ Example: `content/posts/2026/2026-04-13-astronight-gameplay/index.md`
 | `tags` | list | no | `[]` | List of tags (rendered as cyan badges) |
 | `series` | list | no | — | Slug of the series this post belongs to, e.g. `["astronight"]` |
 | `episode` | int | if series set | — | Episode number within the series (used for ordering and display) |
+| `showMeta` | bool | no | `true` | Set to `false` to hide the date and reading time (useful for static pages like About) |
 
 Example:
 
@@ -98,10 +99,10 @@ episode: 1
 
 Place a file named `cover.*` (any extension) inside the post's Page Bundle folder:
 
-```
+```txt
 content/posts/2026/2026-04-06-astronight-gameplay/
 ├── index.md
-└── cover.jpg      ← automatically detected and displayed
+└── cover.avif      ← automatically detected and displayed
 ```
 
 - Shown as a thumbnail on post cards (150 × 110 px, object-fit cover)
@@ -130,7 +131,7 @@ A series is a Hugo taxonomy. To create a new series:
 
 1. Add a folder under `content/series/`:
 
-```
+```txt
 content/series/my-series/
 └── _index.md
 ```
@@ -171,6 +172,8 @@ For YouTube:
 
 ### Converting images to AVIF
 
+Requires [ImageMagick](https://imagemagick.org/) (`brew install imagemagick`). Converts all JPG/PNG to AVIF and deletes the originals.
+
 ```bash
 ./scripts/convert-media.sh              # converts all JPG/PNG under content/
 ./scripts/convert-media.sh content/posts/2026/my-post   # single post
@@ -180,7 +183,9 @@ For YouTube:
 
 ## Deployment
 
-The site deploys automatically to GitHub Pages on every push to `main` via `.github/workflows/static.yml`.
+The site deploys automatically to GitHub Pages every day at 08:00 UTC and on every push to `main` via `.github/workflows/hugo.yml`.
 
-Build command: `hugo --minify`  
+But you can also deploy manually from the Github Actions tab.
+
+Build command: `hugo --gc --minify`  
 Output directory: `public/`
