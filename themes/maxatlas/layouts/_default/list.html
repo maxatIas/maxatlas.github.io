@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="page">
+  <div class="post-list">
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ if .IsHome }}
+      {{ $postsSection := site.GetPage "posts" }}
+      {{ if $postsSection }}{{ $pages = $postsSection.RegularPages.ByDate.Reverse }}{{ end }}
+    {{ end }}
+    {{ range $pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+  {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}

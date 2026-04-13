@@ -1,0 +1,22 @@
+{{ $cover := .Resources.GetMatch "cover.*" }}
+{{ $isSeries := .Params.series }}
+<a class="post-card{{ if $isSeries }} post-card--series{{ else }} post-card--standalone{{ end }}" href="{{ .RelPermalink }}">
+  <div class="post-card__cover{{ if not $cover }} post-card__cover--empty{{ end }}">
+    {{ if $cover }}
+      <img class="post-card__cover-img" src="{{ $cover.RelPermalink }}" alt="{{ .Title }}">
+    {{ end }}
+  </div>
+  <div class="post-card__body">
+    <div class="post-card__date">{{ .Date.Format "2006-01-02" }}</div>
+    <div class="post-card__title">{{ .Title }}</div>
+    <div class="post-card__excerpt">{{ .Summary | plainify | truncate 120 }}</div>
+    <div class="post-card__tags">
+      {{ range .Params.series }}
+        <span class="tag tag--series">{{ . }}</span>
+      {{ end }}
+      {{ range .Params.tags }}
+        <span class="tag tag--regular">{{ . }}</span>
+      {{ end }}
+    </div>
+  </div>
+</a>
