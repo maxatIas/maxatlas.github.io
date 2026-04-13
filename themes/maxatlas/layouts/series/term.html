@@ -1,0 +1,42 @@
+{{ define "main" }}
+{{ $cover := .Resources.GetMatch "cover.*" }}
+
+{{ if $cover }}
+<div class="article__cover" style="margin-bottom:0;">
+  <img src="{{ $cover.RelPermalink }}" alt="{{ .Title }}">
+  <div class="article__cover-scanlines"></div>
+</div>
+{{ end }}
+
+<div class="page">
+  <div class="series-header">
+    <div class="series-header__breadcrumb">
+      <a href="{{ "/series/" | relURL }}">Series</a> / {{ .Title }}
+    </div>
+    <h1 class="series-header__title">✦ {{ upper .Title }}</h1>
+    <p class="series-header__desc">{{ .Params.description }}</p>
+    <div class="series-header__meta">
+      <span>{{ len .Pages }} episodes</span> · ongoing
+    </div>
+  </div>
+
+  <div class="episode-list">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ $epCover := .Resources.GetMatch "cover.*" }}
+      <a class="episode-card" href="{{ .RelPermalink }}">
+        <div class="episode-card__num">{{ .Params.episode }}</div>
+        <div class="episode-card__cover{{ if not $epCover }} episode-card__cover--empty{{ end }}">
+          {{ if $epCover }}
+            <img class="episode-card__cover-img" src="{{ $epCover.RelPermalink }}" alt="{{ .Title }}">
+          {{ end }}
+        </div>
+        <div class="episode-card__body">
+          <div class="episode-card__meta">{{ .Date.Format "January 2, 2006" }}</div>
+          <div class="episode-card__title">{{ .Title }}</div>
+          <div class="episode-card__excerpt">{{ .Summary | plainify | truncate 100 }}</div>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
