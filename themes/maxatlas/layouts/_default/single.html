@@ -1,0 +1,49 @@
+{{ define "main" }}
+{{ $cover := .Resources.GetMatch "cover.*" }}
+{{ $series := index .Params.series 0 }}
+
+{{ if $cover }}
+<div class="article__cover">
+  <img src="{{ $cover.RelPermalink }}" alt="{{ .Title }}">
+  <div class="article__cover-scanlines"></div>
+</div>
+{{ end }}
+
+<div class="page">
+  <article>
+    <h1 class="article__title">{{ .Title }}</h1>
+    <div class="article__meta">
+      {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+    </div>
+    <div class="article__tags">
+      {{ range .Params.series }}
+        <a href="{{ printf "/series/%s/" . | relURL }}" class="tag tag--series">{{ . }}</a>
+      {{ end }}
+      {{ range .Params.tags }}
+        <a href="{{ printf "/tags/%s/" . | relURL }}" class="tag tag--regular">{{ . }}</a>
+      {{ end }}
+    </div>
+
+    <div class="article__body">
+      {{ .Content }}
+    </div>
+
+    {{ if $series }}
+      {{ $currentEp := .Params.episode }}
+      {{ $seriesPages := (index site.Taxonomies.series $series).Pages.ByParam "episode" }}
+      {{ $prev := false }}
+      {{ $next := false }}
+      {{ range $seriesPages }}
+        {{ if lt .Params.episode $currentEp }}{{ $prev = . }}{{ end }}
+        {{ if and (not $next) (gt .Params.episode $currentEp) }}{{ $next = . }}{{ end }}
+      {{ end }}
+      {{ if or $prev $next }}
+      <nav class="series-nav">
+        <span>{{ if $prev }}← <a href="{{ $prev.RelPermalink }}">{{ $prev.Title }}</a>{{ end }}</span>
+        <span>{{ if $next }}<a href="{{ $next.RelPermalink }}">{{ $next.Title }}</a> →{{ end }}</span>
+      </nav>
+      {{ end }}
+    {{ end }}
+  </article>
+</div>
+{{ end }}
