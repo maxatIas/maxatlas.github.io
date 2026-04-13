@@ -67,7 +67,7 @@ a:hover { color: var(--accent-magenta); }
 
 .nav__links a {
   font-family: monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.0625rem;
@@ -84,10 +84,10 @@ a:hover { color: var(--accent-magenta); }
 .tag {
   display: inline-block;
   font-family: monospace;
-  font-size: 0.5625rem;
+  font-size: 0.6875rem;
   text-transform: uppercase;
   letter-spacing: 0.0625rem;
-  padding: 0.125rem 0.4375rem;
+  padding: 0.1875rem 0.5rem;
   border-radius: 2px;
 }
 
@@ -132,8 +132,8 @@ a:hover { color: var(--accent-magenta); }
 }
 
 .post-card__cover {
-  width: 130px;
-  min-height: 90px;
+  width: 150px;
+  min-height: 110px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
@@ -160,17 +160,17 @@ a:hover { color: var(--accent-magenta); }
 .post-card:hover .post-card__cover-img { transform: scale(1.08); }
 
 .post-card__body {
-  padding: 0.625rem 0.75rem;
+  padding: 0.875rem 1rem;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.375rem;
 }
 
-.post-card__date    { font-family: monospace; font-size: 0.5625rem; color: var(--text-muted); }
-.post-card__title   { font-size: 0.75rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
-.post-card__excerpt { font-size: 0.5625rem; color: var(--text-muted); line-height: 1.4; flex: 1; }
-.post-card__tags    { display: flex; flex-wrap: wrap; gap: 0.3125rem; margin-top: 0.25rem; }
+.post-card__date    { font-family: monospace; font-size: 0.75rem; color: var(--text-muted); }
+.post-card__title   { font-size: 1rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; }
+.post-card__excerpt { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+.post-card__tags    { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.25rem; }
 
 /* ── Pagination ──────────────────────────────────────── */
 .pagination {
@@ -180,7 +180,7 @@ a:hover { color: var(--accent-magenta); }
   gap: 0.5rem;
   padding: 1rem 0;
   font-family: monospace;
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
   border-top: 1px solid var(--border);
   margin-top: 1rem;
@@ -230,7 +230,7 @@ a:hover { color: var(--accent-magenta); }
 
 .article__meta {
   font-family: monospace;
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
@@ -254,8 +254,8 @@ a:hover { color: var(--accent-magenta); }
   margin: 1.25rem 0 0.5rem;
 }
 
-.article__body h2 { font-size: 1rem; }
-.article__body h3 { font-size: 0.875rem; }
+.article__body h2 { font-size: 1.125rem; }
+.article__body h3 { font-size: 1rem; }
 .article__body p  { color: #cbd5e1; margin-bottom: 0.75rem; }
 
 .article__body code {
@@ -299,7 +299,7 @@ a:hover { color: var(--accent-magenta); }
   border-top: 1px solid var(--border);
   margin-top: 1.5rem;
   font-family: monospace;
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
 }
 
 /* ── Video embed ─────────────────────────────────────── */
@@ -328,7 +328,7 @@ a:hover { color: var(--accent-magenta); }
 
 .page__subtitle {
   font-family: monospace;
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
   margin-bottom: 1.25rem;
 }
@@ -342,7 +342,7 @@ a:hover { color: var(--accent-magenta); }
 
 .series-header__breadcrumb {
   font-family: monospace;
-  font-size: 0.5625rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
   margin-bottom: 0.5rem;
 }
@@ -358,7 +358,7 @@ a:hover { color: var(--accent-magenta); }
 }
 
 .series-header__desc {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: #94a3b8;
   line-height: 1.6;
   margin-bottom: 0.375rem;
@@ -366,7 +366,7 @@ a:hover { color: var(--accent-magenta); }
 
 .series-header__meta {
   font-family: monospace;
-  font-size: 0.5625rem;
+  font-size: 0.8125rem;
   color: var(--text-muted);
 }
 
@@ -413,8 +413,8 @@ a:hover { color: var(--accent-magenta); }
 }
 
 .episode-card__cover {
-  width: 100px;
-  min-height: 70px;
+  width: 120px;
+  min-height: 90px;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
@@ -440,7 +440,7 @@ a:hover { color: var(--accent-magenta); }
 
 .episode-card:hover .episode-card__cover-img { transform: scale(1.08); }
 
-.episode-card__body    { padding: 0.5rem 0.625rem; flex: 1; }
-.episode-card__meta    { font-family: monospace; font-size: 0.5625rem; color: var(--text-muted); margin-bottom: 0.1875rem; }
-.episode-card__title   { font-size: 0.75rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 0.25rem; }
-.episode-card__excerpt { font-size: 0.5625rem; color: var(--text-muted); line-height: 1.4; }
+.episode-card__body    { padding: 0.75rem 0.875rem; flex: 1; }
+.episode-card__meta    { font-family: monospace; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+.episode-card__title   { font-size: 0.9375rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 0.25rem; }
+.episode-card__excerpt { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5; }
