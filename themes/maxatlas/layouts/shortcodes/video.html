@@ -1,0 +1,11 @@
+{{ $src := .Get "src" }}
+{{ $resource := .Page.Resources.GetMatch $src }}
+<div class="video-embed">
+  <video autoplay loop muted playsinline>
+    {{ if $resource }}
+      <source src="{{ $resource.RelPermalink }}" type="video/webm">
+    {{ else }}
+      <source src="{{ $src }}" type="video/webm">
+    {{ end }}
+  </video>
+</div>
