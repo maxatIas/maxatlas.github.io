@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+{{ partial "og.html" . }}
 {{ $css := resources.Get "css/main.css" | minify }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
