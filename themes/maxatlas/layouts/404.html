@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{ $cover := .Resources.GetMatch "cover.*" }}
+<div class="page-404">
+  <div class="page-404__hero{{ if not $cover }} page-404__hero--no-cover{{ end }}">
+    {{ if $cover }}
+    <div class="page-404__cover">
+      <img src="{{ $cover.RelPermalink }}" alt="404">
+      <div class="article__cover-scanlines"></div>
+    </div>
+    {{ end }}
+    <div class="page-404__body">
+      <div class="page-404__code">404</div>
+      <div class="page-404__sub">WRONG WARP PIPE</div>
+      <p class="page-404__msg">
+        This level does not exist.<br>
+        The plumber is <em>somewhere</em>, but not here.<br>
+        No checkpoints. No respawn.
+      </p>
+      <a href="{{ "/" | relURL }}" class="page-404__cta">← Find a valid warp</a>
+    </div>
+  </div>
+</div>
+{{ end }}
