@@ -10,5 +10,15 @@ theme = "maxatlas"
 [params]
   description = "Dev articles with a gaming soul"
 
+  # Nav identity
+  headerTitle = "MAXATLAS"
+  headerImg   = "/img/max-800x800.avif"
+  motto       = "Game Developer"
+
+  # Default author (overridable per post via frontmatter)
+  author     = "Max Pilato"
+  authorDesc = "Game Developer"
+  avatar     = "/img/max-800x800.avif"
+
 [pagination]
   pagerSize = 10
