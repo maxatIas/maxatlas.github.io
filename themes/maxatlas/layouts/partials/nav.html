@@ -1,5 +1,15 @@
 <nav class="nav">
-  <a class="nav__logo" href="{{ "/" | relURL }}">MAXATLAS</a>
+  <a class="nav__logo" href="{{ "/" | relURL }}">
+    {{- with site.Params.headerImg }}
+    <img src="{{ . }}" alt="{{ site.Params.headerTitle | default site.Title }}" class="nav__logo-img">
+    {{- end }}
+    <span class="nav__logo-text">
+      <span class="nav__logo-title">{{ site.Params.headerTitle | default site.Title }}</span>
+      {{- with site.Params.motto }}
+      <span class="nav__logo-motto">{{ . }}</span>
+      {{- end }}
+    </span>
+  </a>
   <ul class="nav__links">
     <li><a href="{{ "/posts/" | relURL }}"{{ if hasPrefix .RelPermalink "/posts" }} aria-current="page"{{ end }}>Blog</a></li>
     <li><a href="{{ "/series/" | relURL }}"{{ if hasPrefix .RelPermalink "/series" }} aria-current="page"{{ end }}>Series</a></li>

@@ -51,12 +51,42 @@ a:hover { color: var(--accent-magenta); }
 }
 
 .nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.nav__logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.nav__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.nav__logo-title {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--accent-cyan);
   text-shadow: var(--glow-cyan);
   letter-spacing: 0.125rem;
+}
+
+.nav__logo-motto {
+  font-family: monospace;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.0625rem;
 }
 
 .nav__links {
