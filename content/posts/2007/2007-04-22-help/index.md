@@ -230,10 +230,20 @@ Common language identifiers: `go`, `js`, `ts`, `python`, `bash`, `yaml`, `json`,
 ## Horizontal Rule
 
 ```markdown
+I'm a paragraph **above** the line.
+
 ---
+
+I'm a paragraph **below** the line.
 ```
 
-Use sparingly to separate major sections.
+Use sparingly to separate major sections:
+
+I'm a paragraph **above** the line.
+
+---
+
+I'm a paragraph **below** the line.
 
 ---
 
@@ -242,10 +252,12 @@ Use sparingly to separate major sections.
 Place a `.mp4` or `.webm` file in the post folder, then use the shortcode:
 
 ```markdown
-{{</* video src="my-video.mp4" */>}}
+{{</* video src="astronight-game.mp4" */>}}
 ```
 
 The video plays silently on loop (autoplay, muted, no controls) — good for gameplay captures and timelapses.
+
+{{< video src="/posts/2026/2026-04-06-astronight-gameplay/astronight-game.mp4" >}}
 
 ---
 
