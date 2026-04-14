@@ -1,13 +1,13 @@
 ---
-title: "About"
+title: "About ⤵️"
 showMeta: false
 ---
 
-Je **cherche une alternance pour la rentrée 2026**, n'hésitez pas à me contacter si vous avez cherchez votre futur compagnon de route qui a cette soif d'apprendre 😉 !
+I am **looking for an apprenticeship starting fall 2026** — feel free to reach out if you are looking for your next eager-to-learn teammate 😉!
 
-Je suis étudiant à la [Coding Factory](https://www.esiee-it.fr/la-coding-factory) de Cergy, une école d'informatique de l'[ESIEE[it]](https://www.esiee-it.fr) qui forme des développeurs web, mobile et gaming dans un format très pratique.
+I am a student at the [Coding Factory](https://www.esiee-it.fr/la-coding-factory) in Cergy, a computer science school run by [ESIEE[it]](https://www.esiee-it.fr) that trains web, mobile and game developers through a highly hands-on curriculum.
 
-Je suis passionné par le développement et j'aime apprendre de nouvelles technologies.
+I am passionate about development and love picking up new technologies.
 
 ![ESIEE[it]](esiee-it.avif "ESIEE[it]")
 ![CCI](cci.avif "CCI Paris Ile-de-France")
