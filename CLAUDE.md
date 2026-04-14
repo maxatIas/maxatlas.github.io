@@ -15,7 +15,7 @@ hugo --gc --minify
 hugo new posts/YYYY/YYYY-MM-DD-slug/index.md
 
 # Convert images to AVIF (requires ImageMagick)
-./scripts/convert-media.sh                              # all posts
+./scripts/convert-media.sh                              # all posts + static/
 ./scripts/convert-media.sh content/posts/2026/my-post  # single post
 ```
 

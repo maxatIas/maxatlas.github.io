@@ -175,7 +175,7 @@ For YouTube:
 Requires [ImageMagick](https://imagemagick.org/) (`brew install imagemagick`). Converts all JPG/PNG to AVIF and deletes the originals.
 
 ```bash
-./scripts/convert-media.sh              # converts all JPG/PNG under content/
+./scripts/convert-media.sh                              # converts all JPG/PNG under content/ and static/
 ./scripts/convert-media.sh content/posts/2026/my-post   # single post
 ```
 

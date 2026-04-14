@@ -7,26 +7,35 @@
 
 set -euo pipefail
 
-CONTENT_DIR="${1:-content}"
-
 if ! command -v magick &>/dev/null; then
   echo "ERROR: ImageMagick not found. Install it with: brew install imagemagick" >&2
   exit 1
 fi
 
+# Default: process both content/ and static/
+DIRS=("${@:-content static}")
+if [[ $# -gt 0 ]]; then
+  DIRS=("$@")
+else
+  DIRS=(content static)
+fi
+
 # ── Images (JPG / PNG) → AVIF ─────────────────────────────────────────────────
 echo "==> Converting images → AVIF …"
-while IFS= read -r -d '' src; do
-  base="${src%.*}"
-  dst="${base}.avif"
-  if [[ -f "$dst" ]]; then
-    echo "  skip (exists): $dst"
-    continue
-  fi
-  echo "  $src → $dst"
-  magick "$src" -quality 60 "$dst"
-  rm "$src"
-done < <(find "$CONTENT_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -print0)
+for dir in "${DIRS[@]}"; do
+  [[ -d "$dir" ]] || { echo "  skip (not a directory): $dir"; continue; }
+  while IFS= read -r -d '' src; do
+    base="${src%.*}"
+    dst="${base}.avif"
+    if [[ -f "$dst" ]]; then
+      echo "  skip (exists): $dst"
+      continue
+    fi
+    echo "  $src → $dst"
+    magick "$src" -quality 60 "$dst"
+    rm "$src"
+  done < <(find "$dir" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -print0)
+done
 
 echo ""
 echo "Done."
