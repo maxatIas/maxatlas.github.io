@@ -77,6 +77,22 @@ a:hover { color: var(--accent-magenta); }
 .nav__links a:hover,
 .nav__links a[aria-current="page"] { color: var(--accent-cyan); }
 
+/* ── Site banner ─────────────────────────────────────── */
+.site-banner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1rem 1rem 0;
+}
+
+.site-banner__img {
+  display: block;
+  max-width: 100%;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
 /* ── Page wrapper ────────────────────────────────────── */
 .page { max-width: 680px; margin: 0 auto; padding: 1.5rem 1rem; }
 
