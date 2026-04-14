@@ -36,8 +36,8 @@
       {{ range .Params.series }}
         <a href="{{ printf "/series/%s/" . | relURL }}" class="tag tag--series">{{ . }}</a>
       {{ end }}
-      {{ range .Params.tags }}
-        <a href="{{ printf "/tags/%s/" . | relURL }}" class="tag tag--regular">{{ . }}</a>
+      {{ range .GetTerms "tags" }}
+        <a href="{{ .RelPermalink }}" class="tag tag--regular">{{ .Title }}</a>
       {{ end }}
     </div>
 
