@@ -1,0 +1,25 @@
+# Social links — displayed at the bottom of the About page.
+# Icons: https://ionic.io/ionicons
+[[socials]]
+href   = "https://github.com/maxatIas"
+target = "_blank"
+icon   = "logo-github"
+title  = "GitHub"
+
+#[[socials]]
+#href   = "https://x.com/maxatIas"
+#target = "_blank"
+#icon   = "logo-x"
+#title  = "X"
+
+[[socials]]
+href   = "https://www.linkedin.com/in/max-pilato-01b1593a0"
+target = "_blank"
+icon   = "logo-linkedin"
+title  = "LinkedIn"
+
+[[socials]]
+href   = "https://www.esiee-it.fr/la-coding-factory"
+target = "_blank"
+icon   = "business"
+title  = "La Coding Factory"
