@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{ $cover := .Resources.GetMatch "cover.*" }}
+{{ $series := index .Params.series 0 }}
+
+{{ if $cover }}
+<div class="article__cover">
+  <img src="{{ $cover.RelPermalink }}" alt="{{ .Title }}">
+  <div class="article__cover-scanlines"></div>
+</div>
+{{ end }}
+
+<div class="page">
+  <article>
+    <h1 class="article__title">{{ .Title }}</h1>
+    {{ if ne .Params.showMeta false }}
+    <div class="article__meta">
+      {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+    </div>
+    {{ end }}
+
+    {{- $authorName   := .Params.author     | default site.Params.author -}}
+    {{- $authorDesc   := .Params.authorDesc | default site.Params.authorDesc -}}
+    {{- $authorAvatar := .Params.avatar     | default site.Params.avatar -}}
+    {{ if or $authorName $authorAvatar }}
+    <div class="article__author">
+      {{ if $authorAvatar }}
+      <img src="{{ $authorAvatar }}" alt="{{ $authorName }}" class="author__avatar">
+      {{ end }}
+      <div class="author__info">
+        {{ if $authorName }}<span class="author__name">{{ $authorName }}</span>{{ end }}
+        {{ if $authorDesc }}<span class="author__desc">{{ $authorDesc }}</span>{{ end }}
+      </div>
+    </div>
+    {{ end }}
+    <div class="article__tags">
+      {{ range .Params.series }}
+        <a href="{{ printf "/series/%s/" . | relURL }}" class="tag tag--series">{{ . }}</a>
+      {{ end }}
+      {{ range .Params.tags }}
+        <a href="{{ printf "/tags/%s/" . | relURL }}" class="tag tag--regular">{{ . }}</a>
+      {{ end }}
+    </div>
+
+    <div class="article__body">
+      {{ .Content }}
+    </div>
+
+    {{ if hugo.Data.socials }}
+    <div class="social-links">
+      {{ range hugo.Data.socials.socials }}
+      <a href="{{ .href }}" target="{{ .target }}" title="{{ .title }}"
+         class="social-link" rel="noopener noreferrer">
+        <ion-icon name="{{ .icon }}"></ion-icon>
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if $series }}
+      {{ $currentEp := .Params.episode }}
+      {{ $seriesPages := (index site.Taxonomies.series $series).Pages.ByParam "episode" }}
+      {{ $prev := false }}
+      {{ $next := false }}
+      {{ range $seriesPages }}
+        {{ if lt .Params.episode $currentEp }}{{ $prev = . }}{{ end }}
+        {{ if and (not $next) (gt .Params.episode $currentEp) }}{{ $next = . }}{{ end }}
+      {{ end }}
+      {{ if or $prev $next }}
+      <nav class="series-nav">
+        <span>{{ if $prev }}← <a href="{{ $prev.RelPermalink }}">{{ $prev.Title }}</a>{{ end }}</span>
+        <span>{{ if $next }}<a href="{{ $next.RelPermalink }}">{{ $next.Title }}</a> →{{ end }}</span>
+      </nav>
+      {{ end }}
+    {{ end }}
+  </article>
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@7/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7/dist/ionicons/ionicons.js"></script>
+{{ end }}
