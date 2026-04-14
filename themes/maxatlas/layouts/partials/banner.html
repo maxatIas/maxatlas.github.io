@@ -1,0 +1,30 @@
+{{- $bannerURL := "" -}}
+{{- $bannerDest := "" -}}
+
+{{- if .Params.banner -}}
+  {{- $bannerURL = .Params.banner -}}
+  {{- $bannerDest = .Params.banner_dest | default "" -}}
+{{- else -}}
+  {{- $bundleBanner := .Resources.GetMatch "banner.*" -}}
+  {{- if $bundleBanner -}}
+    {{- $bannerURL = $bundleBanner.RelPermalink -}}
+  {{- else -}}
+    {{- range slice "avif" "webp" "jpg" "jpeg" "png" -}}
+      {{- if and (not $bannerURL) (os.FileExists (printf "static/img/banner.%s" .)) -}}
+        {{- $bannerURL = printf "/img/banner.%s" . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $bannerURL -}}
+<div class="site-banner">
+  {{- if $bannerDest }}
+  <a href="{{ $bannerDest }}" target="_blank" rel="noopener">
+  {{- end }}
+  <img src="{{ $bannerURL }}" alt="Banner" class="site-banner__img">
+  {{- if $bannerDest }}
+  </a>
+  {{- end }}
+</div>
+{{- end -}}
