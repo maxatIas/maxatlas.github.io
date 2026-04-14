@@ -21,28 +21,30 @@
     {{- $authorName   := .Params.author     | default site.Params.author -}}
     {{- $authorDesc   := .Params.authorDesc | default site.Params.authorDesc -}}
     {{- $authorAvatar := .Params.avatar     | default site.Params.avatar -}}
-    {{ if or $authorName $authorAvatar }}
-    <div class="article__author">
-      {{ if $authorAvatar }}
-      <img src="{{ $authorAvatar }}" alt="{{ $authorName }}" class="author__avatar">
-      {{ end }}
-      <div class="author__info">
-        {{ if $authorName }}<span class="author__name">{{ $authorName }}</span>{{ end }}
-        {{ if $authorDesc }}<span class="author__desc">{{ $authorDesc }}</span>{{ end }}
+    <div class="author-row">
+      {{ if or $authorName $authorAvatar }}
+      <div class="article__author">
+        {{ if $authorAvatar }}
+        <img src="{{ $authorAvatar }}" alt="{{ $authorName }}" class="author__avatar">
+        {{ end }}
+        <div class="author__info">
+          {{ if $authorName }}<span class="author__name">{{ $authorName }}</span>{{ end }}
+          {{ if $authorDesc }}<span class="author__desc">{{ $authorDesc }}</span>{{ end }}
+        </div>
       </div>
-    </div>
-    {{ end }}
+      {{ end }}
 
-    {{ if hugo.Data.socials }}
-    <div class="social-links">
-      {{ range hugo.Data.socials.socials }}
-      <a href="{{ .href }}" target="{{ .target }}" title="{{ .title }}"
-         class="social-link" rel="noopener noreferrer">
-        <ion-icon name="{{ .icon }}"></ion-icon>
-      </a>
+      {{ if hugo.Data.socials }}
+      <div class="social-links">
+        {{ range hugo.Data.socials.socials }}
+        <a href="{{ .href }}" target="{{ .target }}" title="{{ .title }}"
+           class="social-link" rel="noopener noreferrer">
+          <ion-icon name="{{ .icon }}"></ion-icon>
+        </a>
+        {{ end }}
+      </div>
       {{ end }}
     </div>
-    {{ end }}
 
     <div class="article__tags">
       {{ range .Params.series }}
