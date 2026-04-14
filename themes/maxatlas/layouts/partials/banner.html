@@ -1,9 +1,8 @@
 {{- $bannerURL := "" -}}
-{{- $bannerDest := "" -}}
+{{- $bannerDest := .Params.banner_dest | default "" -}}
 
 {{- if .Params.banner -}}
   {{- $bannerURL = .Params.banner -}}
-  {{- $bannerDest = .Params.banner_dest | default "" -}}
 {{- else -}}
   {{- $bundleBanner := .Resources.GetMatch "banner.*" -}}
   {{- if $bundleBanner -}}
