@@ -89,6 +89,30 @@ Use `##` for main sections. Avoid `#` (that is the article title). Go no deeper 
 2. Second step
 3. Third step
 
+**Ordered with sub-levels (a, b, c):**
+
+Nested items still use numbers in the source — CSS renders sub-levels as `a. b. c.` automatically.
+
+```markdown
+1. First item
+   1. Sub-item A
+   2. Sub-item B
+2. Second item
+   1. Sub-item A
+   2. Sub-item B
+   3. Sub-item C
+3. Third item
+```
+
+1. First item
+   1. Sub-item A
+   2. Sub-item B
+2. Second item
+   1. Sub-item A
+   2. Sub-item B
+   3. Sub-item C
+3. Third item
+
 ---
 
 ## Links
