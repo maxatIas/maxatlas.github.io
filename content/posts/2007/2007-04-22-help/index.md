@@ -47,7 +47,7 @@ showMeta: false
 `inline code`
 ```
 
-Renders as: **bold text**, *italic text*, ~~strikethrough~~, `inline code`
+**bold text**, *italic text*, ~~strikethrough~~, `inline code`
 
 ---
 
@@ -73,6 +73,10 @@ Use `##` for main sections. Avoid `#` (that is the article title). Go no deeper 
   - Nested item
 ```
 
+- First item
+- Second item
+  - Nested item
+
 **Ordered:**
 
 ```markdown
@@ -81,38 +85,51 @@ Use `##` for main sections. Avoid `#` (that is the article title). Go no deeper 
 3. Third step
 ```
 
+1. First step
+2. Second step
+3. Third step
+
 ---
 
 ## Links
+
+**External link:**
 
 ```markdown
 [Link text](https://example.com)
 ```
 
-For internal links:
+[Link text](https://example.com)
+
+**Internal link — use `ref` to get a build-time checked URL:**
 
 ```markdown
-[About page](/about/)
-[Another post](/posts/2026/2026-04-13-timelapse-tuto/)
+[my previous AstroNight post]({{</* ref "posts/2026/2026-04-06-astronight-gameplay" */>}})
 ```
+
+[my previous AstroNight post]({{< ref "posts/2026/2026-04-06-astronight-gameplay" >}})
+
+Hugo will error at build time if the target page does not exist — which prevents silent broken links.
 
 ---
 
 ## Images
 
-Place the image file in the post's folder (next to `index.md`), then reference it:
+Place the image file in the post's folder (next to `index.md`), then reference it by filename:
 
 ```markdown
-![Alt text](my-image.avif)
+![Alt text](help.avif)
 ```
+
+![A screenshot used as an example](help.avif)
+
+A file named `cover.*` in the post folder is automatically used as the article banner and card thumbnail — no frontmatter needed.
 
 Prefer AVIF format. Run the conversion script if you have JPG/PNG:
 
 ```bash
 ./scripts/convert-media.sh content/posts/2026/my-post
 ```
-
-A file named `cover.*` in the post folder is automatically used as the article banner and card thumbnail — no frontmatter needed.
 
 ---
 
@@ -125,13 +142,22 @@ A file named `cover.*` in the post folder is automatically used as the article b
 | Value 4  | Value 5  | Value 6  |
 ```
 
-Alignment:
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| Value 1  | Value 2  | Value 3  |
+| Value 4  | Value 5  | Value 6  |
+
+**With alignment:**
 
 ```markdown
-| Left | Centre | Right |
-|:-----|:------:|------:|
-| a    | b      | c     |
+| Left     |  Centre  |    Right |
+|:---------|:--------:|---------:|
+| a        |    b     |        c |
 ```
+
+| Left     |  Centre  |    Right |
+|:---------|:--------:|---------:|
+| a        |    b     |        c |
 
 ---
 
@@ -143,6 +169,8 @@ Alignment:
 Use the `hugo server` command to preview.
 ```
 
+Use the `hugo server` command to preview.
+
 **Code block** — wrap in triple backticks and specify the language:
 
 ````markdown
@@ -152,6 +180,12 @@ func main() {
 }
 ```
 ````
+
+```go
+func main() {
+    fmt.Println("Hello, world!")
+}
+```
 
 Common language identifiers: `go`, `js`, `ts`, `python`, `bash`, `yaml`, `json`, `html`, `css`, `csharp`, `markdown`.
 
@@ -164,7 +198,8 @@ Common language identifiers: `go`, `js`, `ts`, `python`, `bash`, `yaml`, `json`,
 > It can span multiple lines.
 ```
 
-Renders with a left purple border.
+> This is a blockquote.
+> It can span multiple lines.
 
 ---
 
@@ -199,6 +234,8 @@ Use the built-in Hugo shortcode with the video ID (the part after `?v=` in the U
 ```
 
 For `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, the ID is `dQw4w9WgXcQ`.
+
+{{< youtube dQw4w9WgXcQ >}}
 
 ---
 
