@@ -1,4 +1,5 @@
 <meta charset="UTF-8">
+{{ if fileExists "static/favicon.svg" }}<link rel="icon" href="/favicon.svg" type="image/svg+xml">{{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="4" fill="#0d0d1a"/>
+
+  <!-- Cyan border with subtle glow -->
+  <rect x="1" y="1" width="30" height="30" rx="3.5"
+        fill="none" stroke="#00ffff" stroke-width="1"
+        opacity="0.45"/>
+
+  <!-- Geometric M — monospace style, no fill, stroke only -->
+  <polyline
+    points="5,26 5,6 16,19 27,6 27,26"
+    fill="none"
+    stroke="#00ffff"
+    stroke-width="3"
+    stroke-linecap="square"
+    stroke-linejoin="miter"
+    filter="url(#glow)"/>
+</svg>
