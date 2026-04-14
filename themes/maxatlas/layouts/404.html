@@ -1,10 +1,19 @@
 {{ define "main" }}
+{{- $cover := "" -}}
+{{- range slice "avif" "webp" "jpg" "jpeg" "png" -}}
+  {{- $path := printf "404-cover.%s" . -}}
+  {{- if and (not $cover) (os.FileExists (printf "static/%s" $path)) -}}
+    {{- $cover = printf "/%s" $path -}}
+  {{- end -}}
+{{- end -}}
 <div class="page-404">
-  <div class="page-404__hero">
+  <div class="page-404__hero{{ if not $cover }} page-404__hero--no-cover{{ end }}">
+    {{ if $cover }}
     <div class="page-404__cover">
-      <img src="/404-cover.avif" alt="404">
+      <img src="{{ $cover }}" alt="404">
       <div class="article__cover-scanlines"></div>
     </div>
+    {{ end }}
     <div class="page-404__body">
       <div class="page-404__code">404</div>
       <div class="page-404__sub">WRONG WARP PIPE</div>
