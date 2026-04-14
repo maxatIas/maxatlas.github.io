@@ -1,17 +1,10 @@
 {{ define "main" }}
-{{- $cover := false -}}
-{{- $404page := site.GetPage "/404" -}}
-{{- if $404page -}}
-  {{- $cover = $404page.Resources.GetMatch "cover.*" -}}
-{{- end -}}
 <div class="page-404">
-  <div class="page-404__hero{{ if not $cover }} page-404__hero--no-cover{{ end }}">
-    {{ if $cover }}
+  <div class="page-404__hero">
     <div class="page-404__cover">
-      <img src="{{ $cover.RelPermalink }}" alt="404">
+      <img src="/404-cover.avif" alt="404">
       <div class="article__cover-scanlines"></div>
     </div>
-    {{ end }}
     <div class="page-404__body">
       <div class="page-404__code">404</div>
       <div class="page-404__sub">WRONG WARP PIPE</div>
