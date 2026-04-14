@@ -490,3 +490,39 @@ a:hover { color: var(--accent-magenta); }
 .episode-card__meta    { font-family: monospace; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; }
 .episode-card__title   { font-size: 0.9375rem; font-weight: 700; color: var(--text-primary); line-height: 1.4; margin-bottom: 0.25rem; }
 .episode-card__excerpt { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ── Article author ──────────────────────────────────── */
+.article__author {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 0.875rem;
+}
+
+.author__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.author__info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.author__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.author__desc {
+  font-family: monospace;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}

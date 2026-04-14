@@ -17,6 +17,21 @@
       {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
     </div>
     {{ end }}
+
+    {{- $authorName   := .Params.author     | default site.Params.author -}}
+    {{- $authorDesc   := .Params.authorDesc | default site.Params.authorDesc -}}
+    {{- $authorAvatar := .Params.avatar     | default site.Params.avatar -}}
+    {{ if or $authorName $authorAvatar }}
+    <div class="article__author">
+      {{ if $authorAvatar }}
+      <img src="{{ $authorAvatar }}" alt="{{ $authorName }}" class="author__avatar">
+      {{ end }}
+      <div class="author__info">
+        {{ if $authorName }}<span class="author__name">{{ $authorName }}</span>{{ end }}
+        {{ if $authorDesc }}<span class="author__desc">{{ $authorDesc }}</span>{{ end }}
+      </div>
+    </div>
+    {{ end }}
     <div class="article__tags">
       {{ range .Params.series }}
         <a href="{{ printf "/series/%s/" . | relURL }}" class="tag tag--series">{{ . }}</a>
