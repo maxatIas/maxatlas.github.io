@@ -1,5 +1,9 @@
 {{ define "main" }}
-{{ $cover := .Resources.GetMatch "cover.*" }}
+{{- $cover := false -}}
+{{- $404page := site.GetPage "/404" -}}
+{{- if $404page -}}
+  {{- $cover = $404page.Resources.GetMatch "cover.*" -}}
+{{- end -}}
 <div class="page-404">
   <div class="page-404__hero{{ if not $cover }} page-404__hero--no-cover{{ end }}">
     {{ if $cover }}
