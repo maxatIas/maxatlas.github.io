@@ -526,3 +526,32 @@ a:hover { color: var(--accent-magenta); }
   font-size: 0.8125rem;
   color: var(--text-muted);
 }
+
+/* ── Social links (about page) ───────────────────────── */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(0, 255, 255, 0.27);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-size: 1.375rem;
+  transition: color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.social-link:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
