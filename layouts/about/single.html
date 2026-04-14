@@ -32,6 +32,18 @@
       </div>
     </div>
     {{ end }}
+
+    {{ if hugo.Data.socials }}
+    <div class="social-links">
+      {{ range hugo.Data.socials.socials }}
+      <a href="{{ .href }}" target="{{ .target }}" title="{{ .title }}"
+         class="social-link" rel="noopener noreferrer">
+        <ion-icon name="{{ .icon }}"></ion-icon>
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
     <div class="article__tags">
       {{ range .Params.series }}
         <a href="{{ printf "/series/%s/" . | relURL }}" class="tag tag--series">{{ . }}</a>
@@ -44,17 +56,6 @@
     <div class="article__body">
       {{ .Content }}
     </div>
-
-    {{ if hugo.Data.socials }}
-    <div class="social-links">
-      {{ range hugo.Data.socials.socials }}
-      <a href="{{ .href }}" target="{{ .target }}" title="{{ .title }}"
-         class="social-link" rel="noopener noreferrer">
-        <ion-icon name="{{ .icon }}"></ion-icon>
-      </a>
-      {{ end }}
-    </div>
-    {{ end }}
 
     {{ if $series }}
       {{ $currentEp := .Params.episode }}
