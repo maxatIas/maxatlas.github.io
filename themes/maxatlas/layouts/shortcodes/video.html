@@ -1,11 +1,14 @@
 {{ $src := .Get "src" }}
 {{ $resource := .Page.Resources.GetMatch $src }}
+{{ $ext := path.Ext $src }}
+{{ $mime := "video/mp4" }}
+{{ if eq $ext ".webm" }}{{ $mime = "video/webm" }}{{ end }}
 <div class="video-embed">
   <video autoplay loop muted playsinline>
     {{ if $resource }}
-      <source src="{{ $resource.RelPermalink }}" type="video/webm">
+      <source src="{{ $resource.RelPermalink }}" type="{{ $mime }}">
     {{ else }}
-      <source src="{{ $src }}" type="video/webm">
+      <source src="{{ $src }}" type="{{ $mime }}">
     {{ end }}
   </video>
 </div>
