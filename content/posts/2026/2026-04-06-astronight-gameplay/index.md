@@ -3,7 +3,7 @@ title: "AstroNight - Gameplay"
 date: 2026-04-06
 series: ["astronight"]
 episode: 1
-tags: ["game", "unity"]
+tags: ["game", "c#", "unity"]
 ---
 
 I'm excited to introduce AstroNight, a game I developed as part of a game jam!

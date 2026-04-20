@@ -3,7 +3,7 @@ title: "AstroNight - Unity Development"
 date: 2026-04-07
 series: ["astronight"]
 episode: 2
-tags: ["game", "unity"]
+tags: ["game", "c#", "unity"]
 ---
 
 Following up on [my previous AstroNight post]({{< ref "posts/2026/2026-04-06-astronight-gameplay" >}}), here's a behind-the-scenes look at Unity!
